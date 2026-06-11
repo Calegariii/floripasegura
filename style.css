@@ -1,0 +1,279 @@
+/* Reset global e paleta de cores escura */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+:root {
+    --bg-darker: #0f172a;
+    --bg-sidebar: #1e293b;
+    --border-color: #334155;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --neon-red: #ef4444;
+    --neon-orange: #f97316;
+    --neon-yellow: #eab308;
+}
+
+body {
+    background-color: var(--bg-darker);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Header */
+.dashboard-header {
+    background-color: var(--bg-darker);
+    border-bottom: 2px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 2rem;
+    height: 60px;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-neon {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #ff4a4a;
+    text-shadow: 0 0 10px rgba(255, 74, 74, 0.6);
+    letter-spacing: 1px;
+}
+
+.divider {
+    color: var(--text-muted);
+    font-size: 1.5rem;
+}
+
+.dashboard-header h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-main);
+    letter-spacing: 0.5px;
+}
+
+.header-status {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #22c55e;
+}
+
+.clock {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-main);
+}
+
+/* Container Principal */
+.dashboard-container {
+    display: flex;
+    flex: 1;
+    height: calc(100vh - 60px);
+}
+
+/* Barra Lateral */
+.sidebar {
+    width: 340px;
+    background-color: var(--bg-sidebar);
+    border-right: 2px solid var(--border-color);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    overflow-y: auto;
+}
+
+.menu-section h3 {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+}
+
+/* Cards das Categorias */
+.card-category {
+    background-color: #0f172a80;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.card-category:hover {
+    border-color: #475569;
+    background-color: #0f172aef;
+}
+
+.card-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    border: 1px solid transparent;
+}
+
+.icon-red { color: var(--neon-red); background: #ef444415; border-color: #ef444440; }
+.icon-orange { color: var(--neon-orange); background: #f9731615; border-color: #f9731640; }
+.icon-yellow { color: var(--neon-yellow); background: #eab30815; border-color: #eab30840; }
+
+.card-info {
+    flex: 1;
+}
+
+.card-info h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.card-info p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.badge {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--text-main);
+}
+
+/* Lista de Áreas de Atenção */
+.attention-list {
+    padding-left: 1.2rem;
+}
+
+.attention-list li {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-main);
+    line-height: 1.4;
+}
+
+.attention-list .subtext {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Wrapper do Mapa e Elementos Flutuantes */
+.map-wrapper {
+    flex: 1;
+    position: relative;
+    height: 100%;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    background-color: #0b0f19; /* Fundo escuro enquanto o mapa carrega */
+}
+
+/* Customização escura para os tiles do OpenStreetMap via CSS */
+.leaflet-layer,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+    filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
+/* Caixas flutuantes no mapa */
+.map-legend, .live-alerts {
+    position: absolute;
+    bottom: 20px;
+    background-color: #0f172ade;
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    border-radius: 8px;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.map-legend {
+    left: 20px;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.map-legend h4 {
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.dot-red { background-color: var(--neon-red); box-shadow: 0 0 6px var(--neon-red); }
+.dot-orange { background-color: var(--neon-orange); box-shadow: 0 0 6px var(--neon-orange); }
+
+.gradient-legend {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.gradient-legend label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.gradient-bar {
+    height: 12px;
+    border-radius: 3px;
+    background: linear-gradient(to right, var(--neon-red), var(--neon-orange), #3b82f6);
+}
+
+/* Alertas em tempo real */
+.live-alerts {
+    right: 20px;
+    width: 300px;
+}
+
+.live-alerts h4 {
+    font-size: 0.85rem;
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 6px;
+    margin-bottom: 8px;
+}
+
+.alert-feed p {
+    font-size: 0.8rem;
+    color: #e2e8f0;
+    margin-bottom: 6px;
+    line-height: 1.3;
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLORIPA SEGURA - MAPA DE RISCO NOTURNO</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="dashboard-header">
+        <div class="logo-area">
+            <span class="logo-neon">FLORIPA SEGURA</span>
+            <span class="divider">-</span>
+            <h1>MAPA DE RISCO NOTURNO</h1>
+        </div>
+        <div class="header-status">
+            <i class="fa-solid fa-user-shield"></i>
+            <span class="status-indicator"></span>
+            <span class="clock" id="live-clock">23:45</span>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        
+        <aside class="sidebar">
+            <section class="menu-section">
+                <h3>CATEGORIAS DE PERIGO:</h3>
+                <div class="card-category" onclick="filtrarMapa('assalto')">
+                    <div class="card-icon icon-red"><i class="fa-solid fa-gun"></i></div>
+                    <div class="card-info">
+                        <h4>Assaltos a Mão Armada</h4>
+                        <p>Dinâmico</p>
+                    </div>
+                    <span class="badge" id="count-assalto">2</span>
+                </div>
+
+                <div class="card-category" onclick="filtrarMapa('veiculo')">
+                    <div class="card-icon icon-orange"><i class="fa-solid fa-car"></i></div>
+                    <div class="card-info">
+                        <h4>Roubos de Veículo</h4>
+                        <p>Dinâmico</p>
+                    </div>
+                    <span class="badge" id="count-veiculo">2</span>
+                </div>
+
+                <div class="card-category" onclick="filtrarMapa('iluminacao')">
+                    <div class="card-icon icon-yellow"><i class="fa-solid fa-lightbulb"></i></div>
+                    <div class="card-info">
+                        <h4>Zonas com Baixa Iluminação</h4>
+                        <p>Dinâmico</p>
+                    </div>
+                    <span class="badge" id="count-iluminacao">3</span>
+                </div>
+            </section>
+
+            <section class="menu-section list-section">
+                <h3>ÁREAS DE ATENÇÃO (NOITE):</h3>
+                <ol class="attention-list">
+                    <li>Centro <span class="subtext">(Rua Fernando Machado, Entorno da Rodoviária)</span></li>
+                    <li>Lagoa da Conceição <span class="subtext">(Centrinho)</span></li>
+                    <li>Beira-Mar Norte <span class="subtext">(Pórtico)</span></li>
+                    <li>Trindade <span class="subtext">(Acesso UFSC)</span></li>
+                </ol>
+            </section>
+        </aside>
+
+        <section class="map-wrapper">
+            <div id="map"></div>
+
+            <div class="map-legend">
+                <h4><span class="legend-dot dot-red"></span> Roubos a Transeunte</h4>
+                <h4><span class="legend-dot dot-orange"></span> Roubos de Veículo</h4>
+                <div class="gradient-legend">
+                    <label>Risco Crítico</label>
+                    <div class="gradient-bar"></div>
+                    <label>Baixo Risco</label>
+                </div>
+            </div>
+
+            <div class="live-alerts">
+                <h4><i class="fa-solid fa-bullhorn"></i> ALERTAS EM TEMPO REAL</h4>
+                <div class="alert-feed">
+                    <p>📢 *15 min atrás: Tentativa de Roubo na Lagoa.*</p>
+                    <p>📢 *32 min atrás: Furto de veículo no Centro.*</p>
+                    <p>📢 *1h atrás: Relato de iluminação apagada na Trindade.*</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/heatmap.js/2.0.2/heatmap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-heatmap@1.0.0/leaflet-heatmap.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
